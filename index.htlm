@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Residencias Alameda | Departamentos de 1, 2 y 3 ambientes en pozo</title>
+<meta name="description" content="Ocho pisos, treinta y dos departamentos y un jardín central. Elegí tu piso, mirá el precio y reservá online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ Tokens ============ */
+:root{
+  --pine:#10302B; --moss:#2F5D50; --mist:#E4EBE5; --paper:#F7F8F5; --sun:#F0B03F; --ink:#16231F;
+  --line:#CBD6CE; --muted:#566660;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --wrap:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--body);font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--paper)}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.08;letter-spacing:-.02em}
+h1{font-size:clamp(2.4rem,5.6vw,4.2rem);font-weight:800}
+h2{font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:700;max-width:20ch}
+h3{font-size:1.2rem;font-weight:700}
+p{max-width:62ch}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 1.25rem}
+section{padding:5.5rem 0}
+.lead{color:var(--muted);margin-top:1rem}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:4px}
+
+.btn{display:inline-block;font:600 1rem var(--body);text-decoration:none;padding:.9rem 1.5rem;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn-sun{background:var(--sun);color:var(--pine)}
+.btn-sun:hover{background:#f6c367}
+.btn-ghost{border-color:currentColor}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.btn-pine{background:var(--pine);color:var(--paper)}
+.btn-pine:hover{background:var(--moss)}
+
+/* ============ Header ============ */
+header{position:sticky;top:0;z-index:20;background:var(--pine);color:var(--paper)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font:800 1.25rem var(--display);text-decoration:none;letter-spacing:-.02em}
+.brand span{font-weight:500;opacity:.7}
+nav{display:flex;gap:1.5rem;align-items:center}
+nav a{text-decoration:none;font-size:.95rem;opacity:.85}
+nav a:hover{opacity:1}
+nav .btn{padding:.5rem 1.1rem;font-size:.95rem;opacity:1}
+@media(max-width:760px){nav a:not(.btn){display:none}}
+
+/* ============ Hero ============ */
+.hero{background:var(--pine);color:var(--paper);padding:4.5rem 0 5.5rem}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:3.5rem;align-items:center}
+.hero p{margin-top:1.4rem;font-size:1.2rem;color:#cfdcd3}
+.hero .cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.facade{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:18px 18px 0;background:var(--moss);border-radius:14px 14px 0 0;max-width:360px;margin-left:auto;width:100%}
+.facade i{aspect-ratio:3/4;border-radius:3px 3px 0 0;background:#1d4339;display:block}
+.facade i.on{animation:light .6s ease forwards;animation-delay:var(--d)}
+.ground{height:14px;background:var(--sun);max-width:360px;margin-left:auto;border-radius:0 0 4px 4px}
+@keyframes light{to{background:var(--sun)}}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.facade,.ground{margin-left:0;max-width:300px}}
+@media(prefers-reduced-motion:reduce){.facade i.on{animation:none;background:var(--sun)}html{scroll-behavior:auto}}
+
+/* ============ Datos clave ============ */
+.facts{background:var(--mist);padding:0}
+.facts dl{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.facts div{padding:1.6rem 1.25rem;border-left:1px solid var(--line)}
+.facts div:first-child{border-left:0;padding-left:0}
+.facts dt{font-size:.9rem;color:var(--muted)}
+.facts dd{font:700 1.2rem var(--display);margin-top:.15rem}
+@media(max-width:760px){.facts dl{grid-template-columns:1fr 1fr}.facts div:nth-child(3){border-left:0;padding-left:0}.facts div{border-top:1px solid var(--line)}.facts div:nth-child(-n+2){border-top:0}}
+
+/* ============ Selector de unidades ============ */
+.finder{display:grid;grid-template-columns:1fr 340px;gap:3rem;margin-top:2.5rem;align-items:start}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}
+.chip{font:500 .95rem var(--body);padding:.5rem 1.1rem;border-radius:999px;border:1.5px solid var(--moss);background:transparent;color:var(--pine);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:var(--paper)}
+.building{border:2px solid var(--pine);border-radius:12px 12px 0 0;border-bottom:0;background:#fff;overflow:hidden}
+.floor{display:grid;grid-template-columns:44px repeat(4,1fr);border-bottom:2px solid var(--pine)}
+.floor b{display:grid;place-items:center;font:700 .9rem var(--display);background:var(--mist);color:var(--pine);border-right:1px solid var(--line)}
+.unit{font:500 .85rem var(--body);padding:.8rem .3rem;border:0;border-right:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;line-height:1.25;transition:background .15s,opacity .2s}
+.unit:last-child{border-right:0}
+.unit small{display:block;color:var(--muted);font-size:.75rem}
+.unit:hover:not(:disabled){background:#fbeccc}
+.unit.res{background:repeating-linear-gradient(135deg,#fff,#fff 6px,#f2ece0 6px,#f2ece0 12px)}
+.unit:disabled{background:var(--mist);color:#8da096;cursor:not-allowed}
+.unit.dim{opacity:.25}
+.unit[aria-pressed="true"]{background:var(--sun);color:var(--pine)}
+.unit[aria-pressed="true"] small{color:var(--pine)}
+.legend{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:1rem;font-size:.9rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:.8rem;height:.8rem;margin-right:.4rem;border:1.5px solid var(--pine);vertical-align:-1px;background:#fff}
+.legend .l-res::before{background:repeating-linear-gradient(135deg,#fff,#fff 3px,#e5dcc8 3px,#e5dcc8 6px)}
+.legend .l-sold::before{background:var(--mist);border-color:#8da096}
+.detail{position:sticky;top:88px;background:var(--pine);color:var(--paper);border-radius:14px;padding:1.8rem}
+.detail h3{font-size:1.6rem}
+.detail ul{list-style:none;margin:1.2rem 0}
+.detail li{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.15);font-size:.98rem}
+.detail li span:first-child{color:#b8c9bf}
+.price{font:800 2rem var(--display);margin:.4rem 0 1.2rem}
+.detail .empty{color:#cfdcd3}
+@media(max-width:900px){.finder{grid-template-columns:1fr}.detail{position:static}}
+
+/* ============ Espacios ============ */
+.spaces{background:var(--mist)}
+.spaces dl{display:grid;grid-template-columns:repeat(2,1fr);gap:0 4rem;margin-top:2.5rem}
+.spaces dl div{padding:1.2rem 0;border-top:1.5px solid var(--moss)}
+.spaces dt{font:700 1.2rem var(--display)}
+.spaces dd{color:var(--muted);margin-top:.2rem;max-width:44ch}
+@media(max-width:700px){.spaces dl{grid-template-columns:1fr}}
+
+/* ============ Financiación ============ */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem;align-items:center}
+.field{margin-bottom:1.6rem}
+.field label{display:flex;justify-content:space-between;font-weight:600;margin-bottom:.5rem}
+input[type=range]{width:100%;accent-color:var(--moss)}
+.result{background:#fff;border:2px solid var(--pine);border-radius:14px;padding:2rem}
+.result p{color:var(--muted);font-size:.95rem}
+.result .big{font:800 2.6rem var(--display);color:var(--pine);margin:.2rem 0 1.2rem;line-height:1}
+.result dl div{display:flex;justify-content:space-between;padding:.5rem 0;border-top:1px solid var(--line)}
+.result .note{margin-top:1rem;font-size:.85rem}
+@media(max-width:800px){.calc{grid-template-columns:1fr}}
+
+/* ============ Ubicación ============ */
+.place{background:var(--pine);color:var(--paper)}
+.place .lead{color:#cfdcd3}
+.place ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 4rem;margin-top:2.5rem}
+.place li{display:flex;justify-content:space-between;padding:1rem 0;border-top:1px solid rgba(255,255,255,.2)}
+.place li span:last-child{color:var(--sun);font-weight:600}
+@media(max-width:700px){.place ul{grid-template-columns:1fr}}
+
+/* ============ Contacto ============ */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:4rem;align-items:start}
+form{display:grid;gap:1.1rem}
+form .two{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+form label{display:block;font-weight:600;font-size:.95rem;margin-bottom:.3rem}
+input,select,textarea{width:100%;font:inherit;padding:.8rem 1rem;border:1.5px solid #a9b9af;border-radius:10px;background:#fff;color:var(--ink)}
+input:invalid:not(:placeholder-shown){border-color:#b3382c}
+textarea{resize:vertical;min-height:100px}
+.fine{font-size:.85rem;color:var(--muted)}
+#ok{display:none;background:var(--mist);border-left:5px solid var(--moss);padding:1.2rem 1.4rem;border-radius:8px}
+#ok.show{display:block}
+.direct{margin-top:2rem;display:grid;gap:.4rem}
+.direct a{font-weight:600}
+@media(max-width:860px){.contact{grid-template-columns:1fr;gap:2.5rem}form .two{grid-template-columns:1fr}}
+
+footer{background:var(--ink);color:#aebdb4;padding:2.5rem 0;font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 3rem;justify-content:space-between}
+footer p{max-width:70ch}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#inicio">Alameda <span>por Norte Desarrollos</span></a>
+    <nav aria-label="Principal">
+      <a href="#unidades">Departamentos</a>
+      <a href="#financiacion">Financiación</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a class="btn btn-sun" href="#contacto">Reservar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Ocho pisos, treinta y dos departamentos y un jardín en el centro.</h1>
+        <p>Departamentos de 1, 2 y 3 ambientes con entrega en diciembre de 2028. Elegí tu piso, mirá el precio y reservá online.</p>
+        <div class="cta">
+          <a class="btn btn-sun" href="#unidades">Ver departamentos disponibles</a>
+          <a class="btn btn-ghost" href="#contacto">Hablar con un asesor</a>
+        </div>
+      </div>
+      <div aria-hidden="true">
+        <div class="facade" id="facade"></div>
+        <div class="ground"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATOS CLAVE (reemplazar por datos reales) -->
+  <div class="facts">
+    <div class="wrap">
+      <dl>
+        <div><dt>Entrega</dt><dd>Diciembre de 2028</dd></div>
+        <div><dt>Superficies</dt><dd>38 a 78 m²</dd></div>
+        <div><dt>Financiación</dt><dd>Hasta 36 cuotas en obra</dd></div>
+        <div><dt>Estado de la obra</dt><dd>Estructura en marcha</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- SELECTOR DE UNIDADES -->
+  <section id="unidades">
+    <div class="wrap">
+      <h2>Elegí tu piso y tu departamento</h2>
+      <p class="lead">Tocá una unidad para ver superficie, orientación y precio. Los pisos altos tienen mejor vista y un valor por m² un poco mayor.</p>
+
+      <div class="chips" role="group" aria-label="Filtrar por ambientes" id="chips">
+        <button class="chip" data-f="0" aria-pressed="true">Todos</button>
+        <button class="chip" data-f="1" aria-pressed="false">1 ambiente</button>
+        <button class="chip" data-f="2" aria-pressed="false">2 ambientes</button>
+        <button class="chip" data-f="3" aria-pressed="false">3 ambientes</button>
+      </div>
+
+      <div class="finder">
+        <div>
+          <div class="building" id="building" role="group" aria-label="Edificio, pisos 1 a 8"></div>
+          <div class="legend">
+            <span>Disponible</span><span class="l-res">Reservado</span><span class="l-sold">Vendido</span>
+          </div>
+        </div>
+        <aside class="detail" id="detail" aria-live="polite"></aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPACIOS -->
+  <section class="spaces">
+    <div class="wrap">
+      <h2>Lo que vas a compartir con tus vecinos</h2>
+      <dl>
+        <div><dt>Jardín central</dt><dd>Un patio verde de uso común, con árboles y lugar para sentarse.</dd></div>
+        <div><dt>Terraza con parrilla</dt><dd>En el último piso, con vista abierta y mesas para reuniones.</dd></div>
+        <div><dt>Cocheras cubiertas</dt><dd>En subsuelo, con ascensor directo a cada piso.</dd></div>
+        <div><dt>Bicicletero y baulera</dt><dd>Guardá bicis y cosas de temporada sin ocupar el departamento.</dd></div>
+        <div><dt>Laundry</dt><dd>Lavarropas y secarropas compartidos en planta baja.</dd></div>
+        <div><dt>Salón de usos múltiples</dt><dd>Para cumpleaños y encuentros, con cocina y baño propios.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- FINANCIACIÓN -->
+  <section id="financiacion">
+    <div class="wrap">
+      <h2>Calculá tu plan de pago</h2>
+      <p class="lead">Elegí cuánto aportás al inicio y en cuántas cuotas pagás el resto durante la obra. Es una simulación orientativa.</p>
+      <div class="calc">
+        <div>
+          <div class="field">
+            <label for="ant">Anticipo <output id="antOut">40%</output></label>
+            <input type="range" id="ant" min="30" max="70" step="5" value="40">
+          </div>
+          <div class="field">
+            <label for="cuo">Cantidad de cuotas <output id="cuoOut">24</output></label>
+            <input type="range" id="cuo" min="12" max="36" step="6" value="24">
+          </div>
+          <p class="fine" id="base"></p>
+        </div>
+        <div class="result">
+          <p>Cuota mensual estimada</p>
+          <div class="big" id="cuota">–</div>
+          <dl>
+            <div><dt>Precio de la unidad</dt><dd id="rPrecio">–</dd></div>
+            <div><dt>Anticipo</dt><dd id="rAnt">–</dd></div>
+            <div><dt>Saldo a financiar</dt><dd id="rSaldo">–</dd></div>
+          </dl>
+          <p class="note">Valores en dólares, sin interés. Las condiciones finales se confirman al firmar el boleto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN (reemplazar por datos reales) -->
+  <section class="place" id="ubicacion">
+    <div class="wrap">
+      <h2>A pasos de lo que usás todos los días</h2>
+      <p class="lead">Av. del Parque 1450. Calle tranquila, a una cuadra de la avenida principal.</p>
+      <ul>
+        <li><span>Plaza principal</span><span>5 min a pie</span></li>
+        <li><span>Supermercado</span><span>3 min a pie</span></li>
+        <li><span>Escuelas y jardines</span><span>6 min a pie</span></li>
+        <li><span>Centro de salud</span><span>8 min a pie</span></li>
+        <li><span>Terminal de ómnibus</span><span>10 min en auto</span></li>
+        <li><span>Parque y ciclovía</span><span>1 cuadra</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap contact">
+      <div>
+        <h2>Reservá o pedí información</h2>
+        <p class="lead">Dejanos tus datos y un asesor te escribe en el día con la planta, el plano y las condiciones de la unidad que elegiste.</p>
+        <div class="direct">
+          <a href="https://wa.me/5490000000000">WhatsApp: +54 9 000 000 0000</a>
+          <a href="mailto:ventas@nortedesarrollos.example">ventas@nortedesarrollos.example</a>
+          <span class="fine">Sala de ventas: Av. del Parque 1450. Lunes a sábados de 10 a 18 h.</span>
+        </div>
+      </div>
+
+      <div>
+        <form id="form" novalidate>
+          <div class="two">
+            <div><label for="nombre">Nombre y apellido</label><input id="nombre" name="nombre" autocomplete="name" required placeholder=" "></div>
+            <div><label for="tel">Teléfono</label><input id="tel" name="tel" type="tel" autocomplete="tel" required placeholder=" " pattern="[0-9+\s()-]{8,}"></div>
+          </div>
+          <div><label for="mail">Email</label><input id="mail" name="mail" type="email" autocomplete="email" required placeholder=" "></div>
+          <div><label for="uni">Unidad de interés</label>
+            <select id="uni" name="uni"><option value="">Todavía no elegí</option></select>
+          </div>
+          <div><label for="msg">Mensaje (opcional)</label><textarea id="msg" name="msg"></textarea></div>
+          <button class="btn btn-pine" type="submit">Enviar consulta</button>
+          <p class="fine">Usamos tus datos solo para responder esta consulta.</p>
+        </form>
+        <div id="ok" role="status" tabindex="-1"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>Norte Desarrollos</strong>
+    <p>Las imágenes, superficies y precios son de referencia y pueden cambiar sin aviso. Los m² son aproximados y están sujetos a la aprobación final de planos. Consultá las condiciones vigentes con un asesor.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ===== Datos de unidades (reemplazar por datos reales o cargar desde una API) ===== */
+  var tipos=[
+    {l:'A',amb:1,m2:38,or:'Norte'},
+    {l:'B',amb:2,m2:52,or:'Norte'},
+    {l:'C',amb:2,m2:58,or:'Este'},
+    {l:'D',amb:3,m2:78,or:'Frente'}
+  ];
+  var USD_M2=1850, PREMIO_PISO=22; // USD por m² y plus por piso
+  var units=[];
+  for(var f=8;f>=1;f--){
+    tipos.forEach(function(t,i){
+      var s=(f*7+i*5)%9;
+      units.push({
+        id:f+t.l, piso:f, l:t.l, amb:t.amb, m2:t.m2, or:t.or,
+        precio:Math.round((t.m2*USD_M2+(f-1)*t.m2*PREMIO_PISO)/1000)*1000,
+        estado: s<2?'vendido':(s===2?'reservado':'disponible')
+      });
+    });
+  }
+  var usd=new Intl.NumberFormat('es-AR',{style:'currency',currency:'USD',maximumFractionDigits:0});
+  var $=function(id){return document.getElementById(id)};
+  var sel=null, filtro=0;
+
+  /* ===== Fachada del hero: una única animación al cargar ===== */
+  var fac=$('facade');
+  for(var i=0;i<32;i++){
+    var w=document.createElement('i');
+    if((i*7+3)%5!==0){w.className='on';w.style.setProperty('--d',(Math.random()*1.6+.3).toFixed(2)+'s');}
+    fac.appendChild(w);
+  }
+
+  /* ===== Edificio ===== */
+  var b=$('building');
+  for(var p=8;p>=1;p--){
+    var row=document.createElement('div');row.className='floor';
+    row.innerHTML='<b>'+p+'</b>';
+    units.filter(function(u){return u.piso===p}).forEach(function(u){
+      var btn=document.createElement('button');
+      btn.className='unit'+(u.estado==='reservado'?' res':'');
+      btn.type='button';btn.dataset.id=u.id;btn.setAttribute('aria-pressed','false');
+      btn.innerHTML=u.l+'<small>'+u.m2+' m²</small>';
+      btn.setAttribute('aria-label','Piso '+u.piso+', unidad '+u.l+', '+u.amb+' ambiente'+(u.amb>1?'s':'')+', '+u.m2+' metros cuadrados, '+u.estado);
+      if(u.estado==='vendido')btn.disabled=true;
+      btn.addEventListener('click',function(){seleccionar(u.id)});
+      row.appendChild(btn);
+    });
+    b.appendChild(row);
+  }
+
+  /* ===== Filtros ===== */
+  $('chips').addEventListener('click',function(e){
+    var c=e.target.closest('.chip');if(!c)return;
+    filtro=+c.dataset.f;
+    document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',x===c)});
+    document.querySelectorAll('.unit').forEach(function(btn){
+      var u=get(btn.dataset.id);
+      btn.classList.toggle('dim',filtro!==0&&u.amb!==filtro);
+    });
+  });
+
+  function get(id){return units.filter(function(u){return u.id===id})[0]}
+
+  /* ===== Panel de detalle ===== */
+  function panel(){
+    var d=$('detail');
+    if(!sel){d.innerHTML='<h3>Elegí un departamento</h3><p class="empty" style="margin-top:.6rem">Tocá cualquier unidad del edificio para ver su ficha y simular el plan de pago.</p>';return}
+    d.innerHTML='<h3>Piso '+sel.piso+', unidad '+sel.l+'</h3>'+
+      '<div class="price">'+usd.format(sel.precio)+'</div>'+
+      '<ul><li><span>Ambientes</span><span>'+sel.amb+'</span></li>'+
+      '<li><span>Superficie cubierta</span><span>'+sel.m2+' m²</span></li>'+
+      '<li><span>Orientación</span><span>'+sel.or+'</span></li>'+
+      '<li><span>Estado</span><span>'+(sel.estado==='reservado'?'Reservado':'Disponible')+'</span></li></ul>'+
+      '<a class="btn btn-sun" href="#contacto" id="consultar">Consultar por esta unidad</a>';
+    $('consultar').addEventListener('click',function(){$('uni').value=sel.id});
+  }
+  function seleccionar(id){
+    sel=get(id);
+    document.querySelectorAll('.unit').forEach(function(btn){btn.setAttribute('aria-pressed',btn.dataset.id===id)});
+    panel();calc();
+  }
+
+  /* ===== Select del formulario ===== */
+  units.filter(function(u){return u.estado!=='vendido'}).forEach(function(u){
+    var o=document.createElement('option');
+    o.value=u.id;o.textContent='Piso '+u.piso+', unidad '+u.l+' ('+u.amb+' amb., '+u.m2+' m²)';
+    $('uni').appendChild(o);
+  });
+
+  /* ===== Calculadora ===== */
+  function calc(){
+    var a=+$('ant').value, c=+$('cuo').value;
+    var precio=sel?sel.precio:100000;
+    var ant=precio*a/100, saldo=precio-ant;
+    $('antOut').textContent=a+'%';$('cuoOut').textContent=c;
+    $('rPrecio').textContent=usd.format(precio);
+    $('rAnt').textContent=usd.format(ant);
+    $('rSaldo').textContent=usd.format(saldo);
+    $('cuota').textContent=usd.format(saldo/c);
+    $('base').textContent=sel?'Calculado para piso '+sel.piso+', unidad '+sel.l+'.':'Calculado sobre un valor de ejemplo. Elegí un departamento arriba para ver su plan real.';
+  }
+  $('ant').addEventListener('input',calc);
+  $('cuo').addEventListener('input',calc);
+
+  /* ===== Formulario ===== */
+  $('form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target;
+    if(!f.checkValidity()){
+      f.querySelectorAll(':invalid')[0].focus();
+      f.reportValidity();return;
+    }
+    /* Conectar acá con tu backend, CRM o servicio de formularios:
+       fetch('/tu-endpoint',{method:'POST',body:new FormData(f)}) */
+    var ok=$('ok');
+    ok.innerHTML='<strong>Recibimos tu consulta, '+f.nombre.value.split(' ')[0]+'.</strong><br>Un asesor te escribe hoy al '+f.tel.value+' o a '+f.mail.value+'.';
+    ok.classList.add('show');f.style.display='none';ok.focus();
+  });
+
+  panel();calc();
+})();
+</script>
+</body>
+</html>
