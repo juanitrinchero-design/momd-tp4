@@ -280,6 +280,18 @@ body.inner .home-btn{display:grid}
   .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
 }
 
+/* Proyectos en venta (mobile): la galería ocupa la franja superior y los beneficios van debajo, sobre negro */
+@media (max-width:991px){
+  .gal-split{display:block;background:var(--negro);--galh:58svh}
+  .gal-split .bg{position:absolute;top:0;left:0;right:0;bottom:auto;height:var(--galh)}
+  .gal-split .shade{bottom:auto;height:var(--galh);background:linear-gradient(180deg,rgba(12,12,12,.72) 0%,rgba(12,12,12,.2) 45%,rgba(12,12,12,.15) 70%,rgba(12,12,12,.55) 100%)}
+  .gal-split .content{display:grid;grid-template-rows:var(--galh) auto;gap:0;padding-top:0;min-height:0}
+  .gal-split .top{padding:26px 0 16px;justify-content:space-between;min-height:0}
+  .gal-split .top .gal-ui{margin-top:auto}
+  .gal-split .content > div:last-child{padding-top:20px}
+  .gal-split .glass{background:#161616;backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+
 /* Marquee de logos aliados */
 .marquee{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .marquee + .marquee{margin-top:10px}
@@ -593,13 +605,21 @@ body.inner .home-btn{display:grid}
      01 · AURA II
      ========================================================= -->
 <section class="view" data-route="/aura-ii" data-wa="Hola, quiero información sobre AURA II (Brasil 421).">
-  <div class="panel gal proj" data-slider>
+  <div class="panel gal proj gal-split" data-slider>
     <div class="bg" data-track>
+      <img src="img/aura2-01-fachada.jpg" alt="Fachada de AURA II sobre Av. Brasil">
+      <img src="img/aura2-02-contrafrente.jpg" alt="Contrafrente con balcones y terraza" loading="lazy">
+      <img src="img/aura2-03-hall-ingreso.jpg" alt="Hall de ingreso con jardín interior" loading="lazy">
+      <img src="img/aura2-04-living.jpg" alt="Living comedor de una unidad" loading="lazy">
+      <img src="img/aura2-05-living-vista.jpg" alt="Living con ventanales y vista a la ciudad" loading="lazy">
+      <img src="img/aura2-06-dormitorio.jpg" alt="Dormitorio principal" loading="lazy">
       <img src="img/aura2-terraza-parrilla.jpg" alt="Balcón terraza con parrilla y vista a las sierras" loading="lazy">
-      <img src="img/aura2-jacuzzi.jpg" alt="Solárium con jacuzzi, fogonero y reposeras en la terraza" loading="lazy">
-      <!-- PENDIENTE: renders de fachada, unidades y plantas de AURA II -->
-      <div class="ph"><span>Pendiente · Render fachada AURA II</span></div>
-      <div class="ph"><span>Pendiente · Render unidad tipo</span></div>
+      <img src="img/aura2-07-sum.jpg" alt="SUM vidriado en la terraza" loading="lazy">
+      <img src="img/aura2-08-terraza-bar.jpg" alt="Terraza con barra y SUM" loading="lazy">
+      <img src="img/aura2-09-terraza-verde.jpg" alt="Terraza con césped y parrilla" loading="lazy">
+      <img src="img/aura2-jacuzzi.jpg" alt="Solárium con jacuzzi, fogonero y reposeras" loading="lazy">
+      <img src="img/aura2-10-acceso-cocheras.jpg" alt="Acceso peatonal y a cocheras" loading="lazy">
+      <img src="img/aura2-11-cocheras.jpg" alt="Cocheras cubiertas" loading="lazy">
     </div>
     <div class="shade"></div>
     <div class="content">
@@ -610,11 +630,10 @@ body.inner .home-btn{display:grid}
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
       <div style="display:grid;gap:14px;align-self:end">
-        <!-- PENDIENTE: confirmar beneficios de AURA II -->
         <ul class="list-ic glass">
-          <li><svg class="ic"><use href="#b-unidad"/></svg><div><b>Departamentos de 1 y 2 dormitorios</b><small>Con balcón terraza y parrilla propia.</small></div></li>
-          <li><svg class="ic"><use href="#b-verde"/></svg><div><b>Amenities en la terraza</b><small>Solárium con jacuzzi, fogonero y SUM con vista a las sierras.</small></div></li>
-          <li><svg class="ic"><use href="#b-ubic"/></svg><div><b>Ubicación estratégica</b><small>Sobre el corredor residencial y comercial de Av. Brasil.</small></div></li>
+          <li><svg class="ic"><use href="#b-crec"/></svg><div><b>Capitalizate: rentabilidad a mediano plazo</b><small>Comprá en pozo con menor costo. Al finalizar la obra el valor de la unidad aumenta y se revaloriza.</small></div></li>
+          <li><svg class="ic"><use href="#b-verde"/></svg><div><b>Accedé a amenities de categoría</b><small>Solárium con jacuzzi, fogonero y SUM con vista a las sierras.</small></div></li>
+          <li><svg class="ic"><use href="#b-ubic"/></svg><div><b>Invertí en una ubicación estratégica de Tandil</b><small>Sobre el corredor residencial y comercial de Av. Brasil.</small></div></li>
         </ul>
         <button class="render-btn" data-render="aura-ii"><svg class="i"><use href="#i-dl"/></svg><span>Descargá el render<br>del proyecto</span></button>
       </div>
@@ -626,7 +645,7 @@ body.inner .home-btn{display:grid}
      01 · LOGGIA
      ========================================================= -->
 <section class="view" data-route="/loggia" data-wa="Hola, quiero información sobre LOGGIA (Brasil 225).">
-  <div class="panel gal proj" data-slider>
+  <div class="panel gal proj gal-split" data-slider>
     <div class="bg" data-track>
       <img src="img/hall-ingreso.jpg" alt="Hall de ingreso con jardín interior" loading="lazy">
       <img src="img/loggia-terraza-verde.jpg" alt="Terraza con césped, parrilla y quincho vidriado" loading="lazy">
