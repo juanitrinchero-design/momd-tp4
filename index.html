@@ -212,7 +212,10 @@ body.inner .home-btn{display:grid}
 .socials a:hover{color:var(--negro);background:var(--amarillo)}
 .footer{padding:18px 0 calc(18px + env(safe-area-inset-bottom))}
 @media (min-width:992px){
-  .ft-links{display:flex;flex-wrap:wrap}
+  .ft-links{display:flex;flex-wrap:wrap;row-gap:4px}
+  .ft-left{flex:1 1 auto;min-width:0}
+  .socials{flex:none}
+  @media (max-width:1199px){ .ft-links{gap:12px;font-size:13px} .ft-left{gap:16px} }
   .legal-dd{display:none}
   .ft-copy{font-size:14px}
   .ft-left{gap:22px}
@@ -339,6 +342,7 @@ body.inner .home-btn{display:grid}
 .page h1{font-size:clamp(34px,8vw,56px);margin-bottom:18px}
 .page h2{font-size:clamp(26px,6vw,38px);margin-bottom:14px}
 .page .intro{font-size:18px;max-width:62ch;color:var(--gris-texto)}
+@media (min-width:992px){.page .faq-intro{max-width:none}}
 .page .yb{margin:0 0 22px}
 
 /* Formularios */
@@ -1010,17 +1014,17 @@ body.inner .home-btn{display:grid}
     <div class="wrap">
       <h1>Preguntas frecuentes</h1>
       <span class="yb"></span>
-      <p class="intro">Introducí una o varias palabras clave en el buscador para encontrar respuesta a tus dudas o preguntas.</p>
+      <p class="intro faq-intro">Introducí una o varias palabras clave en el buscador para encontrar respuesta a tus dudas o preguntas.</p>
       <label class="search"><span class="sr-only">Buscar en preguntas frecuentes</span><svg class="i"><use href="#i-search"/></svg><input type="search" id="faq-q" placeholder="Ej.: cuotas, escritura, cochera" autocomplete="off"></label>
-      <!-- PENDIENTE: validar preguntas y respuestas con el área comercial -->
       <div class="faq" id="faq">
         <details><summary>¿Qué significa comprar en pozo?</summary><div class="ans">Es adquirir una unidad mientras el edificio está en proyecto o en construcción. Al entrar en una etapa temprana accedés a mejores condiciones de precio y financiación que con una unidad terminada.</div></details>
-        <details><summary>¿Cuáles son los pasos para acceder a la venta de pozo?</summary><div class="ans">Son cinco: seña, adhesión, anticipo, cuotas y, al finalizar la obra, posesión y escritura. Podés ver el detalle en la sección <a href="#/venta-de-pozo">Venta de pozo</a>.</div></details>
-        <details><summary>¿Cómo se pagan las cuotas?</summary><div class="ans">El saldo se abona en cuotas durante el avance de la obra. La cantidad de cuotas y su actualización se definen en cada contrato; consultalo con un asesor comercial.</div></details>
+        <details><summary>¿Cuáles son los pasos para acceder a la venta de pozo?</summary><div class="ans">Son cinco: reserva de la unidad, firma del acuerdo legal (contrato de adhesión a un fideicomiso), anticipo inicial, cuotas durante la obra y, al finalizarla, posesión y escritura. Podés ver el detalle en la sección <a href="#/venta-de-pozo">Venta de pozo</a>.</div></details>
+        <details><summary>¿Cómo se pagan las cuotas?</summary><div class="ans">El saldo restante no cancelado en la seña y el anticipo se abona en cuotas mensuales durante el avance de la obra. La cantidad de cuotas y su actualización se definen en cada contrato; consultalo con el asesor comercial.</div></details>
         <details><summary>¿Cuándo recibo la posesión y la escritura?</summary><div class="ans">La posesión se entrega con la unidad terminada y la escritura se realiza una vez finalizado el edificio y cumplidos los pagos pactados. Los plazos dependen de cada desarrollo.</div></details>
-        <details><summary>¿Las unidades tienen cochera?</summary><div class="ans">Depende del desarrollo y de la unidad. Consultá la disponibilidad de cocheras de AURA II y LOGGIA con nuestro equipo comercial.</div></details>
-        <details><summary>¿Puedo visitar la obra o el showroom?</summary><div class="ans">Sí. Coordiná una visita escribiéndonos por WhatsApp o acercate a nuestra oficina de Maipú N° 215, Oficina 9, de lunes a viernes de 9 a 16 horas.</div></details>
-        <details><summary>¿Cómo puedo seguir el avance de mi unidad?</summary><div class="ans">Compartimos novedades del avance de obra en nuestras redes y, si ya sos cliente, podés consultar el estado de tu unidad con tu asesor.</div></details>
+        <details><summary>¿Las unidades tienen cochera?</summary><div class="ans">Sí. Consultá la disponibilidad de cocheras de AURA II y LOGGIA con nuestro equipo comercial.</div></details>
+        <details><summary>¿Puedo visitar la obra?</summary><div class="ans">Sí. Coordiná una visita escribiéndonos por WhatsApp a nuestros asesores comerciales.</div></details>
+        <details><summary>¿Cómo puedo seguir el avance de mi unidad?</summary><div class="ans">El asesoramiento integral de Can Manresa durante la obra incluye el seguimiento constante junto a los inversores, despejando dudas y comunicando cada paso.</div></details>
+        <details><summary>¿Realizan proyectos de casas particulares?</summary><div class="ans">En la actualidad, no. Solo trabajamos desarrollos propios o colaboraciones con firmas en construcciones verticales.</div></details>
         <details><summary>¿Trabajan con empresas o profesionales de la construcción?</summary><div class="ans">Sí, trabajamos con más de 30 firmas locales. Si querés sumarte, escribinos desde la sección <a href="#/contacto">Contacto</a>.</div></details>
       </div>
       <p class="no-res" id="faq-none">No encontramos resultados para tu búsqueda. Escribinos por WhatsApp y te respondemos.</p>

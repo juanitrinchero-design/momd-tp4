@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Página no encontrada | Can Manresa</title>
+<!-- Error 404 para GitHub Pages: cualquier dirección inexistente se redirige a la página 404 diseñada dentro de index.html -->
+<script>
+  (function () {
+    var parts = location.pathname.split('/').filter(Boolean);
+    // En GitHub Pages de proyecto (usuario.github.io/repositorio/...) la base es /repositorio/
+    var base = (/\.github\.io$/.test(location.hostname) && parts.length) ? '/' + parts[0] + '/' : '/';
+    location.replace(base + '#/404');
+  })();
+</script>
+<style>
+  html,body{margin:0;height:100%;background:#0C0C0C;color:#D8D8D8;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  body{display:grid;place-items:center;text-align:center;padding:24px}
+  b{color:#F2C91C;font-size:56px;display:block;line-height:1}
+  a{color:#fff}
+</style>
+</head>
+<body>
+  <p><b>404</b>Redirigiendo… Si no avanza, <a href="./">volvé al inicio</a>.</p>
+</body>
+</html>
