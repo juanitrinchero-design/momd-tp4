@@ -306,6 +306,13 @@ body.inner .home-btn{display:grid}
 .wa-inline b{color:var(--amarillo);font-weight:600}
 .wa-inline .wa-c{width:52px;height:52px;border-radius:50%;background:var(--amarillo);color:var(--negro);display:grid;place-items:center;font-size:28px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
 
+/* Venta de pozo: la bajada toma el ancho del título en desktop */
+.vp-head{display:grid;gap:18px}
+@media (min-width:992px){
+  .vp-head{display:inline-grid;justify-self:start;align-self:flex-start}
+  .vp-head .lead{width:0;min-width:100%;max-width:none}
+}
+
 /* Marquee de logos aliados */
 .marquee{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .marquee + .marquee{margin-top:10px}
@@ -710,21 +717,22 @@ body.inner .home-btn{display:grid}
     <div class="bg"><img src="img/venta-de-pozo.jpg" alt="Ingreso de un edificio de Can Manresa" loading="lazy" style="object-position:50% 60%"></div>
     <div class="shade" style="background:linear-gradient(180deg,rgba(12,12,12,.75),rgba(12,12,12,.55) 50%,rgba(12,12,12,.8)),var(--matiz)"></div>
     <div class="content">
-      <h1>¿Cómo accedo a la venta de pozo?</h1>
-      <p class="lead" style="max-width:46ch">En cinco pasos podés acceder a una inversión segura y rentable. Asesorate con nuestro equipo comercial por WhatsApp.</p>
-      <!-- PENDIENTE: validar con el área comercial la descripción de cada paso -->
+      <div class="vp-head">
+        <h1>¿Cómo accedo a la venta de pozo?</h1>
+        <p class="lead">En cinco pasos podés acceder a una inversión segura y rentable. Asesorate con nuestro equipo comercial por WhatsApp.</p>
+      </div>
       <div class="two-col">
         <ol class="list-ic glass steps">
-          <li><span class="num"></span><div><b>Seña</b><small>Reservás tu unidad y congelás las condiciones de la operación.</small></div></li>
-          <li><span class="num"></span><div><b>Adhesión</b><small>Firmás el contrato y te sumás formalmente al desarrollo.</small></div></li>
-          <li><span class="num"></span><div><b>Anticipo</b><small>Abonás el anticipo acordado al inicio del plan.</small></div></li>
+          <li><span class="num"></span><div><b>Reserva de la unidad</b><small>Se abona una seña para reservar el departamento o local elegido dentro del plano del edificio.</small></div></li>
+          <li><span class="num"></span><div><b>Firma del acuerdo legal</b><small>Se formaliza la operación mediante un contrato de adhesión a un fideicomiso (al costo o al precio pactado), habitualmente firmado en escribanía.</small></div></li>
+          <li><span class="num"></span><div><b>Anticipo inicial</b><small>Se entrega un pago inicial que suele rondar entre el 25% y el 40% del valor total de la propiedad.</small></div></li>
         </ol>
         <div style="display:grid;gap:16px">
           <ol class="list-ic glass steps" start="4" style="counter-reset:paso 3">
-            <li><span class="num"></span><div><b>Cuotas</b><small>Pagás el saldo en cuotas durante el avance de la obra.</small></div></li>
-            <li><span class="num"></span><div><b>Posesión y escritura</b><small>Recibís tu unidad terminada y escriturás.</small></div></li>
+            <li><span class="num"></span><div><b>Cuotas</b><small>El porcentaje restante se cancela mediante cuotas mensuales durante el período de obra, las cuales pueden ajustarse en pesos según el índice CAC (Cámara Argentina de la Construcción) o pactarse en dólares.</small></div></li>
+            <li><span class="num"></span><div><b>Posesión y escritura</b><small>Al finalizar la obra y saldar el valor, se recibe la posesión de la unidad y, posteriormente, se realiza la escritura definitiva.</small></div></li>
           </ol>
-          <a class="help" href="#/preguntas-frecuentes"><svg class="i"><use href="#i-q"/></svg><span><b>¿Precisás ayuda?</b><small>Ingresá a la sección de preguntas frecuentes.</small></span></a>
+          <a class="help" href="#/preguntas-frecuentes"><svg class="i"><use href="#i-q"/></svg><span><b>¿Tenés más dudas?</b><small>Ingresá a la sección de preguntas frecuentes.</small></span></a>
         </div>
       </div>
     </div>
