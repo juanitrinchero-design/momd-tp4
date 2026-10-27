@@ -282,7 +282,7 @@ body.inner .home-btn{display:grid}
 
 /* Proyectos en venta (mobile): la galería ocupa la franja superior y los beneficios van debajo, sobre negro */
 @media (max-width:991px){
-  .gal-split{display:block;background:var(--negro);--galh:58svh}
+  .gal-split{display:block;background:var(--negro)}
   .gal-split .bg{position:absolute;top:0;left:0;right:0;bottom:auto;height:var(--galh)}
   .gal-split .shade{bottom:auto;height:var(--galh);background:linear-gradient(180deg,rgba(12,12,12,.72) 0%,rgba(12,12,12,.2) 45%,rgba(12,12,12,.15) 70%,rgba(12,12,12,.55) 100%)}
   .gal-split .content{display:grid;grid-template-rows:var(--galh) auto;gap:0;padding-top:0;min-height:0}
@@ -290,7 +290,21 @@ body.inner .home-btn{display:grid}
   .gal-split .top .gal-ui{margin-top:auto}
   .gal-split .content > div:last-child{padding-top:20px}
   .gal-split .glass{background:#161616;backdrop-filter:none;-webkit-backdrop-filter:none}
+  /* CTA de render arriba de los beneficios, a la vista apenas termina la galería */
+  .gal-split .content > div:last-child{display:flex;flex-direction:column;gap:14px;padding-top:16px}
+  .gal-split .render-btn{order:-1;width:100%;justify-content:center;background:var(--amarillo);font-size:16px;padding:14px 16px;box-shadow:none}
+  .gal-split .render-btn br{display:none}
+  .gal-split .render-btn span{white-space:nowrap}
+  /* WhatsApp en el borde inferior derecho de la galería; se oculta el flotante en estas páginas */
+  .gal-split .gal-ui{flex-wrap:nowrap;width:100%}
+  .gal-split .wa-inline{display:flex}
+  body.split .wa-float{display:none}
+  .gal-split{--galh:52svh}
 }
+.wa-inline{display:none;margin-left:auto;align-items:center;gap:8px;text-decoration:none;color:#fff}
+.wa-inline > span:first-child{background:var(--negro);font-size:12px;line-height:1.15;font-weight:500;padding:7px 10px;border-radius:999px}
+.wa-inline b{color:var(--amarillo);font-weight:600}
+.wa-inline .wa-c{width:52px;height:52px;border-radius:50%;background:var(--amarillo);color:var(--negro);display:grid;place-items:center;font-size:28px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
 
 /* Marquee de logos aliados */
 .marquee{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
@@ -627,7 +641,7 @@ body.inner .home-btn{display:grid}
         <span class="badge">En venta</span>
         <h1>AURA II · Brasil 421</h1>
         <p class="lead">Deslizá y recorré las unidades y los amenities de AURA II. Invertí con Can Manresa.</p>
-        <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
+        <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span><a class="wa-inline" data-wa-link href="#" target="_blank" rel="noopener" aria-label="Contactá un asesor por WhatsApp"><span>Contactá un<br><b>asesor ahora</b></span><span class="wa-c"><svg class="i"><use href="#i-wa"/></svg></span></a></div>
       </div>
       <div style="display:grid;gap:14px;align-self:end">
         <ul class="list-ic glass">
@@ -635,7 +649,7 @@ body.inner .home-btn{display:grid}
           <li><svg class="ic"><use href="#b-verde"/></svg><div><b>Accedé a amenities de categoría</b><small>Solárium con jacuzzi, fogonero y SUM con vista a las sierras.</small></div></li>
           <li><svg class="ic"><use href="#b-ubic"/></svg><div><b>Invertí en una ubicación estratégica de Tandil</b><small>Sobre el corredor residencial y comercial de Av. Brasil.</small></div></li>
         </ul>
-        <button class="render-btn" data-render="aura-ii"><svg class="i"><use href="#i-dl"/></svg><span>Descargá el render<br>del proyecto</span></button>
+        <button class="render-btn" data-render="aura-ii"><svg class="i"><use href="#i-dl"/></svg><span>Descargá el render <br>del proyecto</span></button>
       </div>
     </div>
   </div>
@@ -658,7 +672,7 @@ body.inner .home-btn{display:grid}
         <span class="badge">En venta</span>
         <h1>LOGGIA · Brasil 225</h1>
         <p class="lead">Deslizá y recorré las unidades y los amenities de LOGGIA. Invertí con Can Manresa.</p>
-        <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
+        <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span><a class="wa-inline" data-wa-link href="#" target="_blank" rel="noopener" aria-label="Contactá un asesor por WhatsApp"><span>Contactá un<br><b>asesor ahora</b></span><span class="wa-c"><svg class="i"><use href="#i-wa"/></svg></span></a></div>
       </div>
       <div style="display:grid;gap:14px;align-self:end">
         <!-- PENDIENTE: confirmar beneficios de LOGGIA -->
@@ -667,7 +681,7 @@ body.inner .home-btn{display:grid}
           <li><svg class="ic"><use href="#b-verde"/></svg><div><b>Terraza verde con parrilla</b><small>Quincho vidriado y espacio de césped de uso común.</small></div></li>
           <li><svg class="ic"><use href="#b-ubic"/></svg><div><b>Sobre Av. Brasil</b><small>A minutos del centro de Tandil.</small></div></li>
         </ul>
-        <button class="render-btn" data-render="loggia"><svg class="i"><use href="#i-dl"/></svg><span>Descargá el render<br>del proyecto</span></button>
+        <button class="render-btn" data-render="loggia"><svg class="i"><use href="#i-dl"/></svg><span>Descargá el render <br>del proyecto</span></button>
       </div>
     </div>
   </div>
@@ -1389,6 +1403,7 @@ const CONFIG = {
     if (!view) { view = views.find(v => v.dataset.route === '/404'); path = '/404'; }
     views.forEach(v => v.classList.toggle('active', v === view));
     document.body.classList.toggle('inner', path !== '/');
+    document.body.classList.toggle('split', !!view.querySelector('.gal-split'));
     document.title = titles[path] || titles['/'];
     $$('[data-nav]').forEach(a => { if (a.dataset.nav === path) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
     $$('.nav .dd').forEach(d => d.classList.toggle('cur', (d.dataset.navGroup||'').split(' ').includes(path.slice(1))));
