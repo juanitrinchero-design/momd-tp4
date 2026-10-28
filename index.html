@@ -322,10 +322,7 @@ body.inner .home-btn{display:grid}
 
 /* Venta de pozo: la bajada toma el ancho del título en desktop */
 .vp-head{display:grid;gap:18px}
-@media (min-width:992px){
-  .vp-head{display:inline-grid;justify-self:start;align-self:flex-start}
-  .vp-head .lead{width:0;min-width:100%;max-width:none}
-}
+
 
 /* Marquee de logos aliados */
 .marquee{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
@@ -582,7 +579,7 @@ body.inner .home-btn{display:grid}
     <div class="shade"></div>
     <div class="content">
       <h2>¿Cómo accedo a la venta de pozo?</h2>
-      <p class="lead">Conocé las ventajas de invertir en pozo con Can Manresa.</p>
+      <p class="lead" data-align-title>Conocé las ventajas de invertir en pozo con Can Manresa.</p>
       <div class="btn-row"><a class="btn btn-o" href="#/venta-de-pozo">Ver más</a></div>
     </div>
   </div>
@@ -593,7 +590,7 @@ body.inner .home-btn{display:grid}
     <div class="shade"></div>
     <div class="content">
       <h2>Desarrollos 100% Can Manresa</h2>
-      <p class="lead">Descubrí todos los proyectos desarrollados íntegramente por Can Manresa en la ciudad de Tandil.</p>
+      <p class="lead" data-align-title>Descubrí todos los proyectos desarrollados íntegramente por Can Manresa en la ciudad de Tandil.</p>
       <div class="btn-row"><a class="btn btn-o" href="#/desarrollos">Ver más</a></div>
       <!-- PENDIENTE: confirmar cifras (Dato 1-4) -->
       <div class="stats">
@@ -609,7 +606,7 @@ body.inner .home-btn{display:grid}
     <div class="shade"></div>
     <div class="content">
       <h2>Juntos desarrollamos Tandil</h2>
-      <p class="lead">Trabajamos con más de 30 firmas locales. Nuestros aliados te cuentan cada obra que realizamos juntos por el desarrollo de Tandil.</p>
+      <p class="lead" data-align-title>Trabajamos con más de 30 firmas locales. Nuestros aliados te cuentan cada obra que realizamos juntos por el desarrollo de Tandil.</p>
       <div class="btn-row"><a class="btn btn-o" href="#/juntos">Conocelas</a></div>
       <!-- PENDIENTE: confirmar cifras -->
       <div class="stats">
@@ -734,7 +731,7 @@ body.inner .home-btn{display:grid}
     <div class="content">
       <div class="vp-head">
         <h1>¿Cómo accedo a la venta de pozo?</h1>
-        <p class="lead">En cinco pasos podés acceder a una inversión segura y rentable. Asesorate con nuestro equipo comercial por WhatsApp.</p>
+        <p class="lead" data-align-title>En cinco pasos podés acceder a una inversión segura y rentable. Asesorate con nuestro equipo comercial por WhatsApp.</p>
       </div>
       <div class="two-col">
         <ol class="list-ic glass steps">
@@ -763,7 +760,7 @@ body.inner .home-btn{display:grid}
     <div class="shade"></div>
     <div class="content">
       <h1>Desarrollos 100% Can Manresa</h1>
-      <p class="lead">Descubrí todos los proyectos desarrollados íntegramente por Can Manresa en la ciudad de Tandil.</p>
+      <p class="lead" data-align-title>Descubrí todos los proyectos desarrollados íntegramente por Can Manresa en la ciudad de Tandil.</p>
       <div class="vm" data-dd>
         <button class="btn btn-o" type="button" aria-expanded="false">Ver más <svg class="i"><use href="#i-down"/></svg></button>
         <div class="vm-menu">
@@ -874,7 +871,7 @@ body.inner .home-btn{display:grid}
     <div class="shade"></div>
     <div class="content">
       <h1>Juntos desarrollamos Tandil</h1>
-      <p class="lead">Trabajamos con más de 30 firmas locales y nacionales. Nuestros aliados te cuentan cada obra que realizamos juntos por el desarrollo de Tandil. Conocelas.</p>
+      <p class="lead" data-align-title>Trabajamos con más de 30 firmas locales y nacionales. Nuestros aliados te cuentan cada obra que realizamos juntos por el desarrollo de Tandil. Conocelas.</p>
       <div class="vm" data-dd>
         <button class="btn btn-o" type="button" aria-expanded="false">Ver más <svg class="i"><use href="#i-down"/></svg></button>
         <div class="vm-menu">
@@ -1494,8 +1491,27 @@ const CONFIG = {
       $$('.reveal', view).forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in'); });
     });
   }
+  /* ---------- Desktop: la bajada toma el ancho del título que tiene arriba ---------- */
+  // Se aplica solo a las bajadas marcadas con data-align-title (venta de pozo, desarrollos y juntos)
+  function alignLeads(){
+    const desk = innerWidth >= 992;
+    $$('.view.active .lead[data-align-title]').forEach(p => {
+      let h = p.previousElementSibling;
+      if (!h || !/^H[12]$/.test(h.tagName)) { p.style.maxWidth = ''; return; }
+      if (!desk) { p.style.maxWidth = ''; return; }
+      const r = document.createRange(); r.selectNodeContents(h);
+      const w = Math.ceil(r.getBoundingClientRect().width);
+      if (!w) return;
+      p.style.maxWidth = w + 'px';
+    });
+  }
+  let alT; addEventListener('resize', () => { clearTimeout(alT); alT = setTimeout(alignLeads, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignLeads);
+  addEventListener('hashchange', () => requestAnimationFrame(alignLeads));
+
   addEventListener('hashchange', route);
   route();
+  requestAnimationFrame(alignLeads);
 })();
 </script>
 </body>
