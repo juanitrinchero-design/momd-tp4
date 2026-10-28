@@ -324,6 +324,10 @@ body.inner .home-btn{display:grid}
 .vp-head{display:grid;gap:18px}
 
 
+/* Tu socio confiable: texto legible a la izquierda, fotos del equipo visibles a la derecha (desktop) */
+.socio-shade{background:rgba(12,12,12,.72)!important}
+@media (min-width:992px){.socio-shade{background:linear-gradient(90deg,rgba(12,12,12,.88) 0%,rgba(12,12,12,.7) 45%,rgba(12,12,12,.15) 75%,rgba(12,12,12,.05) 100%)!important}}
+
 /* Marquee de logos aliados */
 .marquee{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .marquee + .marquee{margin-top:10px}
@@ -405,13 +409,23 @@ body.inner .home-btn{display:grid}
 @media (min-width:768px){.cta-band{flex-direction:row;align-items:center;justify-content:space-between}}
 
 /* Equipo */
-.team-photo{aspect-ratio:16/7;border-radius:var(--radius);overflow:hidden;margin:20px 0 26px}
-.team{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.member{text-align:center}
-.member .ph{aspect-ratio:1;border-radius:50%;height:auto;width:100%;max-width:140px;margin:0 auto 10px;align-items:center;justify-content:center}
-.member .ph span{margin:0;font-size:10px;padding:4px 6px}
-.member b{display:block;font-size:16px}
-.member small{color:#666;font-size:14px}
+.team-photo{margin:20px 0 28px;border-radius:var(--radius);overflow:hidden;aspect-ratio:3/2}
+.team-photo img{width:100%;height:100%;object-fit:cover}
+@media (min-width:992px){.team-photo{aspect-ratio:21/9}.team-photo img{object-position:50% 62%}}
+.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.member{position:relative;background:#fff;border-radius:var(--radius);padding:30px 16px 18px;display:flex;flex-direction:column;gap:4px;border:1px solid #e3e3e3;overflow:hidden;transition:background .25s,border-color .25s,transform .25s}
+.member::before{content:"";position:absolute;top:16px;left:16px;width:10px;height:10px;background:var(--amarillo)}
+.member::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--amarillo);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.member .m-title{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-top:6px;min-height:15px}
+.member b{font-size:17px;line-height:1.15;font-weight:600}
+.member small{font-size:14px;color:var(--gris-texto);line-height:1.3;margin-top:6px;padding-top:8px;border-top:1px solid #ececec}
+@media (hover:hover){
+  .member:hover{background:var(--negro);border-color:var(--negro);transform:translateY(-3px)}
+  .member:hover b{color:#fff}
+  .member:hover small{color:var(--gris);border-top-color:#333}
+  .member:hover::after{transform:scaleX(1)}
+}
+@media (min-width:992px){.team{grid-template-columns:repeat(5,1fr);gap:16px}}
 @media (min-width:768px){.team{grid-template-columns:repeat(5,1fr)}}
 
 /* Legales y 404 */
@@ -1020,10 +1034,16 @@ body.inner .home-btn{display:grid}
 
   <div class="panel gal reveal" id="socio-confiable" data-slider>
     <div class="bg" data-track>
-      <img src="img/obra-aerea-tandil.jpg" alt="Obra de Can Manresa en Tandil" loading="lazy">
-      <img src="img/desarrollo-pileta.jpg" alt="Edificio terminado por Can Manresa" loading="lazy">
+      <img src="img/socio-01-fundadores.jpg" alt="Equipo directivo de Can Manresa trabajando en la oficina" loading="lazy">
+      <img src="img/socio-02-equipo-oficina.jpg" alt="Equipo técnico trabajando en la oficina" loading="lazy">
+      <img src="img/socio-03-equipo-revision.jpg" alt="Revisión de proyecto entre dos integrantes del equipo" loading="lazy">
+      <img src="img/socio-04-equipo-pantalla.jpg" alt="Dos integrantes del equipo revisando un plano en pantalla" loading="lazy">
+      <img src="img/socio-05-arquitecto.jpg" alt="Integrante del equipo técnico en su escritorio" loading="lazy">
+      <img src="img/socio-06-administracion.jpg" alt="Equipo de administración en la oficina" loading="lazy">
+      <img src="img/socio-07-administracion-2.jpg" alt="Integrante del equipo de administración" loading="lazy" style="object-position:50% 25%">
+      <img src="img/socio-08-administracion-3.jpg" alt="Integrante del equipo de administración" loading="lazy" style="object-position:50% 30%">
     </div>
-    <div class="shade" style="background:linear-gradient(90deg,rgba(12,12,12,.85),rgba(12,12,12,.55) 70%,rgba(12,12,12,.35)),var(--matiz)"></div>
+    <div class="shade socio-shade"></div>
     <div class="content">
       <h2>Tu socio confiable</h2>
       <span class="yb"></span>
@@ -1042,8 +1062,7 @@ body.inner .home-btn{display:grid}
     <div class="wrap">
       <h2>Nuestro equipo</h2>
       <span class="yb"></span>
-      <!-- PENDIENTE: foto grupal + fotos, nombres y cargos del equipo -->
-      <div class="team-photo"><div class="ph light"><span>Pendiente · Foto del equipo</span></div></div>
+      <figure class="team-photo"><img src="img/equipo-grupal.jpg" alt="Equipo de Can Manresa en una terraza con las sierras de Tandil de fondo" loading="lazy"></figure>
       <div class="team" data-team></div>
     </div>
   </section>
@@ -1278,9 +1297,18 @@ const CONFIG = {
     ['aliado-19.jpg','Estudio Frolik Arquitectos'],
     ['aliado-20.jpg','Inmobiliaria Cano Miralles']
   ],
-  team: [ // PENDIENTE: nombres, cargos y fotos
-    ['Jorge','Presidente'],['Ricardo','Dirección'],['Nombre','Cargo'],['Nombre','Cargo'],['Nombre','Cargo'],
-    ['Nombre','Cargo'],['Nombre','Cargo'],['Nombre','Cargo'],['Nombre','Cargo'],['Nombre','Cargo']
+  // Equipo: [título, nombre, cargo]
+  team: [
+    ['Lic.','Jorge Persson','Director de Finanzas'],
+    ['Ing.','Ricardo Persson','Gerente General'],
+    ['Ing.','Ezequiel Mouillerón','Director General de Obras'],
+    ['Ing.','Álvaro Boga','Área Operativa y Técnica'],
+    ['Ing.','Diego Boga','Área Operativa y Técnica'],
+    ['Arq.','Mariano Cola','Área Operativa y Técnica'],
+    ['Arq.','Lucía Kohout','Área Operativa y Técnica'],
+    ['Contadora','Guillermina Pereda','Administración'],
+    ['','Soledad Pereda','Administración'],
+    ['','Micaela Quenan','Administración']
   ]
 };
 
@@ -1296,8 +1324,8 @@ const CONFIG = {
 
   /* ---------- Equipo ---------- */
   const team = $('[data-team]');
-  if (team) team.innerHTML = CONFIG.team.map(([n,c]) =>
-    `<div class="member"><div class="ph light"><span>Foto</span></div><b>${n}</b><small>${c}</small></div>`).join('');
+  if (team) team.innerHTML = CONFIG.team.map(([t,n,c]) =>
+    `<div class="member"><span class="m-title">${t || '&nbsp;'}</span><b>${n}</b><small>${c}</small></div>`).join('');
 
   /* ---------- Marquee de logos aliados ---------- */
   $$('[data-marquee]').forEach(m => {
