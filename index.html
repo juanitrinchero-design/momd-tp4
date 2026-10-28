@@ -247,12 +247,17 @@ body.inner .home-btn{display:grid}
 .steps .num::before{content:counter(paso)}
 
 /* Card de testimonio */
-.testi{background:#fff;color:var(--negro);border-radius:var(--radius);padding:18px 18px 16px;max-width:460px;box-shadow:0 16px 40px rgba(0,0,0,.35);position:relative}
+.testi{margin:0;background:#fff;color:var(--negro);border-radius:var(--radius);padding:18px 18px 16px;max-width:460px;box-shadow:0 16px 40px rgba(0,0,0,.35);position:relative}
 .testi::before{content:"\201C";position:absolute;top:-18px;left:14px;font-size:72px;line-height:1;color:var(--amarillo);font-weight:700}
 .testi q{display:block;quotes:none;font-size:16px;line-height:1.45}
 .testi .who{display:flex;align-items:center;gap:12px;margin-top:14px;padding-top:12px;border-top:1px solid #eee}
 .testi .av{width:40px;height:40px;border-radius:50%;background:var(--gris);display:grid;place-items:center;font-size:20px;color:#555;flex:none;overflow:hidden}
-.testi .who b{display:block;font-size:15px;line-height:1.2}
+.testi .avs{display:flex;flex:none}
+.testi .avs .av{width:46px;height:46px;border:2px solid #fff}
+.testi .avs .av img{width:100%;height:100%;object-fit:cover}
+.testi .avs .av.logo{margin-left:-12px;background:#fff}
+.testi .who b{display:block;font-size:15px;line-height:1.2;color:var(--negro)}
+.testi .avs .av svg{font-size:22px;color:#888}
 .testi .who span{font-size:13px;color:#666}
 .testi .who a{margin-left:auto;font-size:13px;font-weight:600;color:var(--negro);text-underline-offset:3px}
 
@@ -273,11 +278,17 @@ body.inner .home-btn{display:grid}
 
 /* Layout de paneles de proyecto: texto arriba, testimonio abajo */
 .proj .content{justify-content:space-between;min-height:calc(100svh - var(--hh))}
+/* el testimonio queda por encima del botón flotante de WhatsApp */
+.proj:not(.gal-split) .testi{margin-bottom:56px}
+@media (min-width:992px){
+  .proj:not(.gal-split) .content{grid-template-columns:minmax(0,1fr)}
+  .proj:not(.gal-split) .testi{justify-self:start;align-self:end;margin-bottom:24px}
+}
 .proj .top{display:flex;flex-direction:column;gap:16px}
 @media (min-width:992px){
   .proj .content{display:grid;grid-template-columns:1.1fr .9fr;align-items:end;gap:40px}
   .proj .top{align-self:start}
-  .proj .testi{justify-self:end;margin-bottom:84px}
+  .proj .testi{justify-self:end}
   .proj .content > div:last-child{margin-bottom:84px}
   .render-btn{justify-self:start}
   .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
@@ -771,7 +782,12 @@ body.inner .home-btn{display:grid}
   </div>
 
   <div class="panel gal proj reveal" id="brasil-117" data-slider data-wa="Hola, quiero información sobre el edificio AURA (Brasil 117).">
-    <div class="bg" data-track><div class="ph"><span>Pendiente · Fotos AURA Brasil 117</span></div><div class="ph"><span>Pendiente · Amenities AURA</span></div></div>
+    <div class="bg" data-track>
+      <img src="img/brasil117-01-ingreso.jpg" alt="Ingreso de AURA sobre Brasil 117" loading="lazy">
+      <img src="img/brasil117-02-vista-aerea.jpg" alt="Vista aérea de AURA sobre Av. Brasil" loading="lazy">
+      <img src="img/brasil117-03-dormitorio.jpg" alt="Dormitorio de una unidad" loading="lazy">
+      <img src="img/brasil117-04-terraza.jpg" alt="Terraza con pileta y parrilla" loading="lazy">
+    </div>
     <div class="shade"></div>
     <div class="content">
       <div class="top">
@@ -779,15 +795,20 @@ body.inner .home-btn{display:grid}
         <p class="lead">Deslizá y recorré las unidades y los amenities de AURA. Un proyecto 100% Can Manresa finalizado y entregado en el nuevo corredor residencial y comercial de Avenida Brasil.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi" style="margin:0"><!-- PENDIENTE: testimonio real -->
-        <q>Texto del testimonio pendiente. Dos o tres líneas sobre la experiencia de trabajar con Can Manresa en este edificio.</q>
-        <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Luis Zaldívar</b><span>Inmobiliaria ZC</span></span></figcaption>
+      <figure class="testi">
+        <q>Hemos logrado entregar las unidades de este proyecto moderno y funcional, pionero en el corredor de Avenida Brasil, que marcó el rumbo para las próximas construcciones en esa avenida.</q>
+        <figcaption class="who"><span class="avs"><span class="av"><img src="img/testimonio-luis-zaldivar.jpg" alt="" data-fallback-icon></span><span class="av logo"><img src="img/aliado-08.jpg" alt="Inmobiliaria ZC"></span></span><span><b>Luis Zaldívar</b><span>Inmobiliaria ZC</span></span></figcaption>
       </figure>
     </div>
   </div>
 
   <div class="panel gal proj reveal" id="yrigoyen-773" data-slider data-wa="Hola, quiero información sobre Núcleo Yrigoyen (Yrigoyen 773).">
-    <div class="bg" data-track><div class="ph"><span>Pendiente · Render Núcleo Yrigoyen</span></div><div class="ph"><span>Pendiente · Avance de obra</span></div></div>
+    <div class="bg" data-track>
+      <img src="img/yrigoyen773-01-render-pileta.jpg" alt="Render de Núcleo Yrigoyen con pileta" loading="lazy">
+      <img src="img/yrigoyen773-02-render-comedor.jpg" alt="Render del living comedor" loading="lazy">
+      <img src="img/yrigoyen773-03-entorno.jpg" alt="Calle arbolada en el centro de Tandil" loading="lazy">
+      <img src="img/yrigoyen773-04-en-obra.jpg" alt="Avance de obra en Yrigoyen 773" loading="lazy">
+    </div>
     <div class="shade"></div>
     <div class="content">
       <div class="top">
@@ -795,31 +816,40 @@ body.inner .home-btn{display:grid}
         <p class="lead">Deslizá y recorré las unidades y los amenities de Núcleo Yrigoyen. Este proyecto está en etapa de obra en pleno centro de Tandil.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi" style="margin:0"><!-- PENDIENTE: testimonio real -->
-        <q>Texto del testimonio pendiente. Dos o tres líneas sobre la experiencia de trabajar con Can Manresa en este edificio.</q>
-        <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Pablo Asín</b><span>Asín Propiedades</span></span></figcaption>
+      <figure class="testi">
+        <q>Es un orgullo poder asistir a Can Manresa en la venta de las unidades de este edificio residencial de excelencia, que revitalizará el centro de la ciudad de Tandil.</q>
+        <figcaption class="who"><span class="avs"><span class="av"><img src="img/testimonio-pablo-asin.jpg" alt="" data-fallback-icon></span><span class="av logo"><img src="img/aliado-07.jpg" alt="Asín Propiedades"></span></span><span><b>Pablo Asín</b><span>Asín Propiedades</span></span></figcaption>
       </figure>
     </div>
   </div>
 
   <div class="panel gal proj reveal" id="avellaneda-1657" data-slider data-wa="Hola, quiero información sobre Avellaneda 1657.">
-    <div class="bg" data-track><div class="ph"><span>Pendiente · Fotos Avellaneda 1657</span></div><div class="ph"><span>Pendiente · Terraza</span></div></div>
+    <div class="bg" data-track>
+      <img src="img/avellaneda1657-01-obra-estructura.jpg" alt="Estructura de hormigón de Avellaneda 1657 en obra" loading="lazy">
+      <img src="img/avellaneda1657-02-obra-mamposteria.jpg" alt="Avance de mampostería en Avellaneda 1657" loading="lazy">
+      <img src="img/avellaneda1657-03-obra-detalle.jpg" alt="Detalle de colocación de ladrillos con nivel" loading="lazy">
+    </div>
     <div class="shade"></div>
     <div class="content">
       <div class="top">
         <h2>Avellaneda 1657</h2>
-        <p class="lead">Deslizá y recorré las unidades y los amenities de Avellaneda 1657, proyecto finalizado y en proceso de entrega. Viví la experiencia de nuestra terraza con el chef Emilio Pardo.</p>
+        <p class="lead">Deslizá y recorré los avances de obra de Avellaneda 1657, un nuevo proyecto en una avenida fundamental de la ciudad, esta vez 100% propio.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi" style="margin:0"><!-- PENDIENTE: testimonio real + link -->
-        <q>Texto del testimonio pendiente. Dos o tres líneas sobre la experiencia en la terraza de Avellaneda 1657.</q>
-        <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Emilio Pardo</b><span>Cocinero de Tandil</span></span><a href="#" data-pending-link>Ver experiencia</a></figcaption>
+      <figure class="testi">
+        <q>Ya hemos trabajado con Can Manresa en esta misma cuadra. Su aporte al desarrollo de Tandil, su garantía en calidad y cumplimiento, es una señal de confianza para nuestro grupo.</q>
+        <figcaption class="who"><span class="avs"><span class="av"><img src="img/testimonio-camilo-granel.jpg" alt="" data-fallback-icon></span><span class="av logo"><img src="img/aliado-11.jpg" alt="Proyecta Inversiones"></span></span><span><b>Camilo Granel</b><span>Proyecta Inversiones</span></span></figcaption>
       </figure>
     </div>
   </div>
 
   <div class="panel gal proj reveal" id="maipu-668" data-slider data-wa="Hola, quiero información sobre Maipú 668.">
-    <div class="bg" data-track><div class="ph"><span>Pendiente · Render Maipú 668</span></div><div class="ph"><span>Pendiente · Avance de obra</span></div></div>
+    <div class="bg" data-track>
+      <img src="img/maipu668-01-pileta.jpg" alt="Render del edificio con pileta" loading="lazy">
+      <img src="img/maipu668-02-ingreso.jpg" alt="Render del ingreso" loading="lazy">
+      <img src="img/maipu668-03-hall.jpg" alt="Render del hall de entrada" loading="lazy">
+      <img src="img/maipu668-04-balcones.jpg" alt="Render de balcones vidriados" loading="lazy">
+    </div>
     <div class="shade"></div>
     <div class="content">
       <div class="top">
@@ -827,9 +857,9 @@ body.inner .home-btn{display:grid}
         <p class="lead">Deslizá y recorré las unidades y los amenities de Maipú 668. Otro proyecto en etapa de obra en el centro tandilense.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi" style="margin:0"><!-- PENDIENTE: testimonio real -->
-        <q>Texto del testimonio pendiente. Dos o tres líneas sobre la experiencia de trabajar con Can Manresa en este edificio.</q>
-        <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Milagros Sandoval</b><span>Sandoval Construcciones</span></span></figcaption>
+      <figure class="testi">
+        <q>El tratamiento del hormigón en la obra de Maipú muestra la solidez y la seriedad con que Can Manresa encara desde la base sus desarrollos.</q>
+        <figcaption class="who"><span class="avs"><span class="av"><img src="img/testimonio-milagros-sandoval.jpg" alt="" data-fallback-icon></span><span class="av logo"><img src="img/aliado-05.jpg" alt="Sandoval Construcciones"></span></span><span><b>Milagros Sandoval</b><span>Sandoval Construcciones</span></span></figcaption>
       </figure>
     </div>
   </div>
@@ -872,7 +902,7 @@ body.inner .home-btn{display:grid}
         <p class="lead">Deslizá y recorré las unidades y los amenities de Paz 343. Esta edificación ya está totalmente habitada, a tres cuadras de la plaza principal de Tandil.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi" style="margin:0"><!-- PENDIENTE: testimonio real -->
+      <figure class="testi"><!-- PENDIENTE: testimonio real -->
         <q>Texto del testimonio pendiente. Dos o tres líneas sobre la obra realizada en conjunto con Can Manresa.</q>
         <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Arq. Mariana Jiménez</b><span>Estudio Trazos Urbanos</span></span></figcaption>
       </figure>
@@ -880,17 +910,22 @@ body.inner .home-btn{display:grid}
   </div>
 
   <div class="panel gal proj reveal" id="avellaneda-1668" data-slider data-wa="Hola, quiero información sobre Avellaneda 1668.">
-    <div class="bg" data-track><div class="ph"><span>Pendiente · Fotos Avellaneda 1668</span></div><div class="ph"><span>Pendiente · Amenities</span></div></div>
+    <div class="bg" data-track>
+      <img src="img/avellaneda1668-01-fachada.jpg" alt="Fachada de Avellaneda 1668 terminado" loading="lazy">
+      <img src="img/avellaneda1668-02-dormitorio.jpg" alt="Ambiente con ventanales" loading="lazy">
+      <img src="img/avellaneda1668-03-dormitorio-balcon.jpg" alt="Dormitorio con salida al balcón" loading="lazy">
+      <img src="img/avellaneda1668-04-bano.jpg" alt="Baño terminado" loading="lazy">
+    </div>
     <div class="shade"></div>
     <div class="content">
       <div class="top">
         <h2>Avellaneda 1668</h2>
-        <p class="lead">Deslizá y recorré las unidades y los amenities de Avellaneda 1668. Un proyecto conjunto de Proyecta Inversiones, Trazos Urbanos y Can Manresa que ya forma parte de la vida cotidiana de la avenida.</p>
+        <p class="lead">Deslizá y recorré las unidades y los amenities de Avellaneda 1668. Un proyecto conjunto de Proyecta Inversiones, Trazos Urbanos y Can Manresa que ya forma parte de la vida cotidiana de la avenida. Viví la experiencia de su terraza con el chef Emilio Pardo.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi" style="margin:0"><!-- PENDIENTE: testimonio real -->
-        <q>Texto del testimonio pendiente. Dos o tres líneas sobre la obra realizada en conjunto con Can Manresa.</q>
-        <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Camilo Granel</b><span>Proyecta Inversiones</span></span></figcaption>
+      <figure class="testi">
+        <q>Agradecido al equipo de Can Manresa que me invitó a estrenar la parrilla de la terraza de este edificio que tiene una vista increíble al cerrito. Espero que los residentes puedan disfrutar cocinar allí tanto como yo.</q>
+        <figcaption class="who"><span class="avs"><span class="av"><img src="img/testimonio-emilio-pardo.jpg" alt="" data-fallback-icon></span></span><span><b>Emilio Pardo</b><span>Cocinero de Tandil</span></span><a href="https://www.instagram.com/reel/DcwlFHsDUZU/" target="_blank" rel="noopener">Ver experiencia</a></figcaption>
       </figure>
     </div>
   </div>
@@ -904,7 +939,7 @@ body.inner .home-btn{display:grid}
         <p class="lead">Deslizá y recorré una obra desarrollada íntegramente por Can Manresa SA, dirigida por el arquitecto Rodolfo Frolik y finalizada en 2010.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi" style="margin:0"><!-- PENDIENTE: testimonio real -->
+      <figure class="testi"><!-- PENDIENTE: testimonio real -->
         <q>Texto del testimonio pendiente. Dos o tres líneas sobre la obra realizada en conjunto con Can Manresa.</q>
         <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Arq. Rodolfo Frolik</b><span>Estudio Frolik</span></span></figcaption>
       </figure>
@@ -920,7 +955,7 @@ body.inner .home-btn{display:grid}
         <p class="lead">Deslizá y recorré las unidades y los amenities de la obra pionera de Can Manresa en Avenida Brasil. Desarrollada junto a Grupo Maxma, en el nuevo corredor residencial y comercial de la ciudad.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi" style="margin:0"><!-- PENDIENTE: testimonio real -->
+      <figure class="testi"><!-- PENDIENTE: testimonio real -->
         <q>Texto del testimonio pendiente. Dos o tres líneas sobre la obra realizada en conjunto con Can Manresa.</q>
         <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Maximiliano Mourrut</b><span>Grupo Maxma</span></span></figcaption>
       </figure>
@@ -936,7 +971,7 @@ body.inner .home-btn{display:grid}
         <p class="lead">Deslizá y recorré la obra de uso comercial y residencial. Diseñado por el arquitecto Guillermo Dupleix, el edificio cambió la fisonomía del barrio.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi" style="margin:0"><!-- PENDIENTE: testimonio real -->
+      <figure class="testi"><!-- PENDIENTE: testimonio real -->
         <q>Texto del testimonio pendiente. Dos o tres líneas sobre la obra realizada en conjunto con Can Manresa.</q>
         <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Arq. Guillermo Dupleix</b><span>Estudio de Arquitectura</span></span></figcaption>
       </figure>
@@ -1406,6 +1441,12 @@ const CONFIG = {
       sum.innerHTML = words.length && hit ? d.dataset.s.replace(new RegExp(`(${words.map(w=>w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')})`,'gi'),'<mark>$1</mark>') : d.dataset.s;
     });
     $('#faq-none').style.display = shown ? 'none' : 'block';
+  });
+
+  /* ---------- Foto de testimonio faltante: muestra un ícono ---------- */
+  $$('img[data-fallback-icon]').forEach(img => {
+    const swap = () => { img.outerHTML = '<svg class="i"><use href="#i-user"/></svg>'; };
+    if (img.complete && !img.naturalWidth) swap(); else img.addEventListener('error', swap, { once: true });
   });
 
   /* ---------- Links pendientes ---------- */
