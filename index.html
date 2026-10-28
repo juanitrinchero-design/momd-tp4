@@ -1444,9 +1444,15 @@ const CONFIG = {
   });
 
   /* ---------- Foto de testimonio faltante: muestra un ícono ---------- */
+  // Primero se busca en img/ y después en la raíz; solo si falla en los dos lugares se muestra el ícono
   $$('img[data-fallback-icon]').forEach(img => {
     const swap = () => { img.outerHTML = '<svg class="i"><use href="#i-user"/></svg>'; };
-    if (img.complete && !img.naturalWidth) swap(); else img.addEventListener('error', swap, { once: true });
+    const check = () => { if (img.dataset.retry && img.complete && !img.naturalWidth) swap(); };
+    img.addEventListener('error', () => setTimeout(check, 0));
+    if (img.complete && !img.naturalWidth) {
+      if (!img.dataset.retry && (img.getAttribute('src') || '').indexOf('img/') === 0) { img.dataset.retry = '1'; img.src = img.getAttribute('src').slice(4); }
+      else swap();
+    }
   });
 
   /* ---------- Links pendientes ---------- */
