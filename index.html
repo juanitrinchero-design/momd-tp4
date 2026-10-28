@@ -259,7 +259,7 @@ body.inner .home-btn{display:grid}
 .testi .who b{display:block;font-size:15px;line-height:1.2;color:var(--negro)}
 .testi .avs .av svg{font-size:22px;color:#888}
 .testi .who span{font-size:13px;color:#666}
-.testi .who a{margin-left:auto;font-size:13px;font-weight:600;color:var(--negro);text-underline-offset:3px}
+.testi .who a{white-space:nowrap;flex:none;margin-left:auto;font-size:13px;font-weight:600;color:var(--negro);text-underline-offset:3px}
 
 /* Galería deslizable de fondo (proyectos) */
 .gal .bg{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
@@ -891,7 +891,12 @@ body.inner .home-btn{display:grid}
   </div>
 
   <div class="panel gal proj reveal" id="paz-343" data-slider data-wa="Hola, quiero información sobre Paz 343.">
-    <div class="bg" data-track><img src="img/venta-de-pozo.jpg" alt="Ingreso del edificio Paz 343" loading="lazy" style="object-position:50% 60%"><div class="ph"><span>Pendiente · Más fotos Paz 343</span></div></div>
+    <div class="bg" data-track>
+      <img src="img/venta-de-pozo.jpg" alt="Ingreso del edificio Paz 343" loading="lazy" style="object-position:50% 60%">
+      <img src="img/paz343-01-balcon-vista-sierras.jpg" alt="Balcón con vista a la ciudad y las sierras" loading="lazy">
+      <img src="img/paz343-02-living.jpg" alt="Living con ventanal" loading="lazy">
+      <img src="img/paz343-03-dormitorio-balcon.jpg" alt="Dormitorio con salida al balcón" loading="lazy">
+    </div>
     <div class="shade"></div>
     <div class="content">
       <div class="top">
@@ -899,9 +904,9 @@ body.inner .home-btn{display:grid}
         <p class="lead">Deslizá y recorré las unidades y los amenities de Paz 343. Esta edificación ya está totalmente habitada, a tres cuadras de la plaza principal de Tandil.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi"><!-- PENDIENTE: testimonio real -->
-        <q>Texto del testimonio pendiente. Dos o tres líneas sobre la obra realizada en conjunto con Can Manresa.</q>
-        <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Arq. Mariana Jiménez</b><span>Estudio Trazos Urbanos</span></span></figcaption>
+      <figure class="testi">
+        <q>La obra demandó exactamente dos años, un plazo óptimo dada la complejidad de las terminaciones y la incorporación de tecnologías de vanguardia.</q>
+        <figcaption class="who"><span class="avs"><span class="av"><img src="img/testimonio-mariano-jimenez.jpg" alt="" data-fallback-icon></span><span class="av logo"><img src="img/aliado-09.jpg" alt="Trazos Urbanos"></span></span><span><b>Arq. Mariano Jiménez</b><span>Estudio Trazos Urbanos</span></span><a href="https://www.eleco.com.ar/contenido-patrocinado/el-lenguaje-de-la-arquitectura-comunicar-a-traves-de-la-forma-los-materiales-y-el-compromiso-ambiental" target="_blank" rel="noopener">Ver nota</a></figcaption>
       </figure>
     </div>
   </div>
@@ -928,7 +933,12 @@ body.inner .home-btn{display:grid}
   </div>
 
   <div class="panel gal proj reveal" id="belgrano-y-alem" data-slider data-wa="Hola, quiero información sobre la obra de Belgrano y Alem.">
-    <div class="bg" data-track><div class="ph"><span>Pendiente · Fotos Belgrano y Alem</span></div></div>
+    <div class="bg" data-track>
+      <img src="img/belgranoalem-01-esquina.jpg" alt="Edificio de Belgrano y Alem en esquina" loading="lazy">
+      <img src="img/belgranoalem-02-fachada.jpg" alt="Fachada blanca con balcones vidriados" loading="lazy">
+      <img src="img/belgranoalem-03-frente.jpg" alt="Frente del edificio con locales comerciales" loading="lazy">
+      <img src="img/belgranoalem-04-hall.jpg" alt="Hall de doble altura con ascensores" loading="lazy">
+    </div>
     <div class="shade"></div>
     <div class="content">
       <div class="top">
@@ -936,15 +946,20 @@ body.inner .home-btn{display:grid}
         <p class="lead">Deslizá y recorré una obra desarrollada íntegramente por Can Manresa SA, dirigida por el arquitecto Rodolfo Frolik y finalizada en 2010.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi"><!-- PENDIENTE: testimonio real -->
-        <q>Texto del testimonio pendiente. Dos o tres líneas sobre la obra realizada en conjunto con Can Manresa.</q>
-        <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Arq. Rodolfo Frolik</b><span>Estudio Frolik</span></span></figcaption>
+      <figure class="testi">
+        <q>Esta obra que ya tiene varios años se consolidó rápidamente como signo de extensión del crecimiento de Tandil y de su centro urbano. Un gran trabajo conjunto con los amigos de Can Manresa.</q>
+        <figcaption class="who"><span class="avs"><span class="av"><img src="img/testimonio-rodolfo-frolik.jpg" alt="" data-fallback-icon></span><span class="av logo"><img src="img/aliado-19.jpg" alt="Estudio Frolik Arquitectos"></span></span><span><b>Arq. Rodolfo Frolik</b><span>Estudio Frolik</span></span></figcaption>
       </figure>
     </div>
   </div>
 
   <div class="panel gal proj reveal" id="brasil-353" data-slider data-wa="Hola, quiero información sobre Brasil 353.">
-    <div class="bg" data-track><div class="ph"><span>Pendiente · Fotos Brasil 353</span></div></div>
+    <div class="bg" data-track>
+      <img src="img/brasil353-01-fachada-jardin.jpg" alt="Fachada y jardín de Brasil 353" loading="lazy">
+      <img src="img/brasil353-02-jardin-aereo.jpg" alt="Vista aérea del jardín con pérgola" loading="lazy">
+      <img src="img/brasil353-03-parrilla-vista.jpg" alt="Parrilla en el balcón con vista a las sierras" loading="lazy">
+      <img src="img/brasil353-04-cocina.jpg" alt="Cocina de una unidad" loading="lazy">
+    </div>
     <div class="shade"></div>
     <div class="content">
       <div class="top">
@@ -952,15 +967,20 @@ body.inner .home-btn{display:grid}
         <p class="lead">Deslizá y recorré las unidades y los amenities de la obra pionera de Can Manresa en Avenida Brasil. Desarrollada junto a Grupo Maxma, en el nuevo corredor residencial y comercial de la ciudad.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi"><!-- PENDIENTE: testimonio real -->
-        <q>Texto del testimonio pendiente. Dos o tres líneas sobre la obra realizada en conjunto con Can Manresa.</q>
-        <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Maximiliano Mourrut</b><span>Grupo Maxma</span></span></figcaption>
+      <figure class="testi">
+        <q>Brasil 353 significó la apertura de un nuevo y moderno edificio, un espacio diseñado para quienes buscan calidad y confort en Tandil.</q>
+        <figcaption class="who"><span class="avs"><span class="av"><img src="img/testimonio-matias-medina.jpg" alt="" data-fallback-icon></span><span class="av logo"><img src="img/aliado-12.jpg" alt="Grupo Maxma"></span></span><span><b>Arq. Matías Medina</b><span>Grupo Maxma</span></span></figcaption>
       </figure>
     </div>
   </div>
 
   <div class="panel gal proj reveal" id="avellaneda-y-roca" data-slider data-wa="Hola, quiero información sobre la obra de Avellaneda y Roca.">
-    <div class="bg" data-track><div class="ph"><span>Pendiente · Fotos Avellaneda y Roca</span></div></div>
+    <div class="bg" data-track>
+      <img src="img/avellanedaroca-01-esquina.jpg" alt="Edificio de Avellaneda y Roca en esquina" loading="lazy">
+      <img src="img/avellanedaroca-02-fachada-roca.jpg" alt="Fachada de hormigón sobre Gral. Roca" loading="lazy">
+      <img src="img/avellanedaroca-03-fachada-avellaneda.jpg" alt="Fachada sobre Av. Avellaneda" loading="lazy">
+      <img src="img/avellanedaroca-04-frente.jpg" alt="Frente del edificio con arboleda" loading="lazy">
+    </div>
     <div class="shade"></div>
     <div class="content">
       <div class="top">
@@ -968,9 +988,9 @@ body.inner .home-btn{display:grid}
         <p class="lead">Deslizá y recorré la obra de uso comercial y residencial. Diseñado por el arquitecto Guillermo Dupleix, el edificio cambió la fisonomía del barrio.</p>
         <div class="gal-ui"><div class="arrows"><button class="arr" data-prev aria-label="Imagen anterior"><svg class="i"><use href="#i-l"/></svg></button><button class="arr" data-next aria-label="Imagen siguiente"><svg class="i"><use href="#i-r"/></svg></button></div><span class="gal-count" data-count></span></div>
       </div>
-      <figure class="testi"><!-- PENDIENTE: testimonio real -->
-        <q>Texto del testimonio pendiente. Dos o tres líneas sobre la obra realizada en conjunto con Can Manresa.</q>
-        <figcaption class="who"><span class="av"><svg class="i"><use href="#i-user"/></svg></span><span><b>Arq. Guillermo Dupleix</b><span>Estudio de Arquitectura</span></span></figcaption>
+      <figure class="testi">
+        <q>Can Manresa construyó la totalidad del edificio. La empresa tiene trayectoria, sabe cómo cuidar el detalle del hormigón, que quede todo impecable.</q>
+        <figcaption class="who"><span class="avs"><span class="av"><img src="img/testimonio-guillermo-dupleix.jpg" alt="" data-fallback-icon></span><span class="av logo"><img src="img/aliado-10.jpg" alt="Guillermo Dupleix Arquitectura"></span></span><span><b>Arq. Guillermo Dupleix</b><span>Estudio de Arquitectura</span></span><a href="https://www.eleco.com.ar/contenido-patrocinado/la-fortaleza-del-hormigon-y-las-vistas-al-arco-serrano-ejes-del-edificio-de-avellaneda-y-roca" target="_blank" rel="noopener">Ver nota</a></figcaption>
       </figure>
     </div>
   </div>
