@@ -324,9 +324,33 @@ body.inner .home-btn{display:grid}
 .vp-head{display:grid;gap:18px}
 
 
+/* Tu socio confiable: fotos encuadradas por slide */
+.socio-r{position:relative;background:#141414}
+.panel .bg .socio-r img{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover}
+@media (min-width:992px){.panel .bg .socio-r img{left:auto;right:0;width:var(--w,60%)}}
+@media (max-width:991px){.panel .bg .sp-1{object-position:40% 50%}.panel .bg .sp-2{object-position:22% 50%}.panel .bg .sp-4{object-position:16% 50%}.panel .bg .sp-5 img{object-position:52% 45%!important}}
 /* Tu socio confiable: texto legible a la izquierda, fotos del equipo visibles a la derecha (desktop) */
 .socio-shade{background:rgba(12,12,12,.72)!important}
 @media (min-width:992px){.socio-shade{background:linear-gradient(90deg,rgba(12,12,12,.88) 0%,rgba(12,12,12,.7) 45%,rgba(12,12,12,.15) 75%,rgba(12,12,12,.05) 100%)!important}}
+
+/* ---------- Tablet vertical (768–991 px) ---------- */
+@media (min-width:768px) and (max-width:991px){
+  .panel .content{padding-left:40px;padding-right:40px}
+  .panel .lead{max-width:48ch}
+  .stats{max-width:none;grid-template-columns:1fr 1fr;gap:16px}
+  .testi{max-width:600px;padding:22px 24px 20px}
+  .testi q{font-size:17px}
+  .gal-split .content > div:last-child{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  .gal-split .render-btn{grid-column:1 / -1}
+  .gal-split .glass{grid-column:1 / -1}
+  .contact-grid{grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+  .page .team{grid-template-columns:repeat(4,1fr);gap:14px}
+  .page .join h2{font-size:28px}
+  .page .join{padding:24px 20px}
+  .page{padding-top:56px}
+  .page .wrap{padding-left:40px;padding-right:40px}
+  .faq,.search,.cta-band{max-width:none}
+}
 
 /* Marquee de logos aliados */
 .marquee{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
@@ -391,7 +415,7 @@ body.inner .home-btn{display:grid}
 @media (min-width:992px){.contact-grid{grid-template-columns:1fr 1fr;gap:64px}}
 
 /* FAQ */
-.search{position:relative;margin:18px 0 26px;max-width:860px}
+.search{display:block;position:relative;margin:34px 0 44px;max-width:860px}
 .search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:20px;color:#666}
 .search input{width:100%;font:inherit;font-size:17px;padding:15px 16px 15px 48px;border:1.5px solid var(--negro);border-radius:999px;background:#fff}
 .search input:focus{outline:none;box-shadow:0 0 0 4px rgba(242,201,28,.6)}
@@ -1034,14 +1058,13 @@ body.inner .home-btn{display:grid}
 
   <div class="panel gal reveal" id="socio-confiable" data-slider>
     <div class="bg" data-track>
-      <img src="img/socio-01-fundadores.jpg" alt="Equipo directivo de Can Manresa trabajando en la oficina" loading="lazy">
-      <img src="img/socio-02-equipo-oficina.jpg" alt="Equipo técnico trabajando en la oficina" loading="lazy">
-      <img src="img/socio-03-equipo-revision.jpg" alt="Revisión de proyecto entre dos integrantes del equipo" loading="lazy">
-      <img src="img/socio-04-equipo-pantalla.jpg" alt="Dos integrantes del equipo revisando un plano en pantalla" loading="lazy">
-      <img src="img/socio-05-arquitecto.jpg" alt="Integrante del equipo técnico en su escritorio" loading="lazy">
+      <img class="sp-1" src="img/socio-01-fundadores.jpg" alt="Equipo directivo de Can Manresa trabajando en la oficina" loading="lazy">
+      <img class="sp-2" src="img/socio-02-equipo-oficina.jpg" alt="Equipo técnico trabajando en la oficina" loading="lazy">
+      <div class="socio-r" style="--w:45%"><img src="img/socio-03-administracion.jpg" alt="Integrante del equipo de administración" loading="lazy" style="object-position:50% 22%"></div>
+      <img class="sp-4" src="img/socio-04-equipo-revision.jpg" alt="Revisión de proyecto entre dos integrantes del equipo" loading="lazy">
+      <div class="socio-r sp-5" style="--w:68%"><img src="img/socio-05-equipo-pantalla.jpg" alt="Dos integrantes del equipo revisando un plano en pantalla" loading="lazy" style="object-position:40% 45%"></div>
       <img src="img/socio-06-administracion.jpg" alt="Equipo de administración en la oficina" loading="lazy">
-      <img src="img/socio-07-administracion-2.jpg" alt="Integrante del equipo de administración" loading="lazy" style="object-position:50% 25%">
-      <img src="img/socio-08-administracion-3.jpg" alt="Integrante del equipo de administración" loading="lazy" style="object-position:50% 30%">
+      <div class="socio-r" style="--w:45%"><img src="img/socio-07-administracion-lentes.jpg" alt="Integrante del equipo de administración" loading="lazy" style="object-position:50% 55%"></div>
     </div>
     <div class="shade socio-shade"></div>
     <div class="content">
