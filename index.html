@@ -1218,6 +1218,7 @@ body.inner .home-btn{display:grid}
     <p class="sub" id="rm-sub">Dejanos tus datos y te enviamos el render del proyecto.</p>
     <form class="form" data-form="render" novalidate>
       <input type="hidden" name="proyecto" value="">
+      <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="field"><label for="rm-nombre">Nombre</label><input id="rm-nombre" name="nombre" autocomplete="name" required placeholder="Juan Pérez"><span class="err"></span></div>
       <div class="field"><label for="rm-email">Email</label><input id="rm-email" name="email" type="email" autocomplete="email" required placeholder="juan@email.com"><span class="err"></span></div>
       <label class="check"><input type="checkbox" name="acepta" required> <span>Acepto la <a href="#/privacidad" data-close-modal>política de privacidad</a>.</span></label>
@@ -1256,6 +1257,7 @@ body.inner .home-btn{display:grid}
     <h2>Contacto</h2>
     <span class="yb"></span>
     <form class="form" data-form="contacto" novalidate>
+      <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="field"><label>Nombre</label><input name="nombre" autocomplete="name" required placeholder="Juan Pérez"><span class="err"></span></div>
       <div class="field"><label>Mail</label><input name="email" type="email" autocomplete="email" required placeholder="juan@email.com"><span class="err"></span></div>
       <div class="field"><label>Mensaje</label><textarea name="mensaje" required placeholder="Quiero recibir información sobre AURA II"></textarea><span class="err"></span></div>
@@ -1289,9 +1291,9 @@ const CONFIG = {
   // WhatsApp del área comercial (formato internacional sin + ni espacios).
   // Tomado del botón de WhatsApp del sitio actual (canmanresa.ar). PENDIENTE: confirmar.
   whatsapp: '5492494006232',
-  // PENDIENTE: endpoint que recibe los formularios (Formspree, Make, CRM, WordPress, etc.).
-  // Mientras esté vacío, los formularios muestran el mensaje de éxito y registran los datos en la consola.
-  formEndpoint: '',
+  // Formularios: Web3Forms (los leads llegan al mail con el que se creó la clave)
+  formEndpoint: 'https://api.web3forms.com/submit',
+  web3formsKey: '906e3f09-d51b-4148-99b2-d2681b7ea67b',
   // PENDIENTE: archivos de render descargables (PDF o JPG) de cada proyecto.
   renders: {
     'aura-ii': { nombre: 'AURA II · Brasil 421', archivo: 'img/aura2-terraza-parrilla.jpg' },
@@ -1458,19 +1460,35 @@ const CONFIG = {
     const form = e.target.closest('[data-form]'); if (!form) return;
     e.preventDefault();
     if (!validate(form)) return;
-    const data = Object.fromEntries(new FormData(form));
-    data.origen = form.dataset.form; data.pagina = location.hash || '#/';
+    const raw = Object.fromEntries(new FormData(form));
+    if (raw.botcheck) return; // trampa antispam: los humanos no completan este campo
+    const proyecto = raw.proyecto && CONFIG.renders[raw.proyecto] ? CONFIG.renders[raw.proyecto].nombre : '';
+    const esRender = form.dataset.form === 'render';
+    const data = {
+      access_key: CONFIG.web3formsKey,
+      subject: esRender ? `Nuevo lead · Descarga de render · ${proyecto}` : 'Nuevo lead · Formulario de contacto',
+      from_name: 'Sitio web Can Manresa',
+      replyto: raw.email,
+      Nombre: raw.nombre,
+      Email: raw.email,
+      ...(raw.mensaje ? { Mensaje: raw.mensaje } : {}),
+      ...(esRender ? { Proyecto: proyecto } : {}),
+      Origen: esRender ? 'Botón "Descargá el render"' : 'Formulario de contacto',
+      Página: location.href,
+      'Acepta política de privacidad': raw.acepta ? 'Sí' : 'No'
+    };
     const btn = $('button[type=submit]', form); btn.disabled = true;
     try {
       if (CONFIG.formEndpoint) {
         const r = await fetch(CONFIG.formEndpoint, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data) });
-        if (!r.ok) throw new Error(r.status);
+        const res = await r.json().catch(() => ({}));
+        if (!r.ok || res.success === false) throw new Error(res.message || r.status);
       } else {
         console.info('[Can Manresa] Lead (configurá CONFIG.formEndpoint para recibirlo):', data);
       }
       form.classList.add('sent');
       if (form.dataset.form === 'render') {
-        const r = CONFIG.renders[data.proyecto];
+        const r = CONFIG.renders[raw.proyecto];
         if (r) { const a = document.createElement('a'); a.href = r.archivo; a.download = `Render ${r.nombre}`.replace(/\s*·\s*/g,' - ').replace(/[^\w\s.-]/g,'').trim(); document.body.appendChild(a); a.click(); a.remove(); }
       }
       form.reset();
