@@ -1215,7 +1215,7 @@ body.inner .home-btn{display:grid}
   <div class="box">
     <button class="icon-btn x" type="button" data-close-modal aria-label="Cerrar"><svg class="i"><use href="#i-x"/></svg></button>
     <h2 id="rm-title">Suscribite y descargá el render</h2>
-    <p class="sub" id="rm-sub">Dejanos tus datos y te enviamos el render del proyecto.</p>
+    <p class="sub" id="rm-sub">Dejanos tus datos y descargá el brochure del proyecto con renders, plantas y amenities.</p>
     <form class="form" data-form="render" novalidate>
       <input type="hidden" name="proyecto" value="">
       <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -1294,10 +1294,10 @@ const CONFIG = {
   // Formularios: Web3Forms (los leads llegan al mail con el que se creó la clave)
   formEndpoint: 'https://api.web3forms.com/submit',
   web3formsKey: '906e3f09-d51b-4148-99b2-d2681b7ea67b',
-  // PENDIENTE: archivos de render descargables (PDF o JPG) de cada proyecto.
+  // Brochures descargables (PDF) de cada proyecto, entregados después de completar el formulario.
   renders: {
-    'aura-ii': { nombre: 'AURA II · Brasil 421', archivo: 'img/aura2-terraza-parrilla.jpg' },
-    'loggia':  { nombre: 'LOGGIA · Brasil 225',  archivo: 'img/loggia-terraza-verde.jpg' }
+    'aura-ii': { nombre: 'AURA II · Brasil 421', archivo: 'img/brochure-aura-ii-brasil-421.pdf' },
+    'loggia':  { nombre: 'LOGGIA · Brasil 225',  archivo: 'img/brochure-loggia-brasil-225.pdf' }
   },
   // Logos de empresas aliadas: [archivo, nombre]. Para sumar o quitar, editá esta lista.
   aliados: [
@@ -1489,7 +1489,14 @@ const CONFIG = {
       form.classList.add('sent');
       if (form.dataset.form === 'render') {
         const r = CONFIG.renders[raw.proyecto];
-        if (r) { const a = document.createElement('a'); a.href = r.archivo; a.download = `Render ${r.nombre}`.replace(/\s*·\s*/g,' - ').replace(/[^\w\s.-]/g,'').trim(); document.body.appendChild(a); a.click(); a.remove(); }
+        if (r) {
+          // busca el PDF en img/ y, si no está, en la raíz del repositorio
+          let href = r.archivo;
+          try { const h = await fetch(href, { method: 'HEAD' }); if (!h.ok && href.indexOf('img/') === 0) href = href.slice(4); } catch (e) {}
+          const a = document.createElement('a'); a.href = href;
+          a.download = `Brochure ${r.nombre}`.replace(/\s*·\s*/g,' - ').replace(/[^\w\s.-]/g,'').trim() + '.pdf';
+          document.body.appendChild(a); a.click(); a.remove();
+        }
       }
       form.reset();
     } catch (err) {
@@ -1503,7 +1510,7 @@ const CONFIG = {
   function openModal(key){
     const r = CONFIG.renders[key]; const form = $('form', modal);
     form.classList.remove('sent'); $('.form-ok', form).textContent = '¡Gracias! Tu descarga comenzó. Un asesor se va a comunicar con vos.';
-    form.proyecto.value = key; $('#rm-sub').textContent = `Dejanos tus datos y descargá el render de ${r ? r.nombre : 'este proyecto'}.`;
+    form.proyecto.value = key; $('#rm-sub').textContent = `Dejanos tus datos y descargá el brochure de ${r ? r.nombre : 'este proyecto'}, con renders, plantas y amenities.`;
     modal.classList.add('open'); document.body.style.overflow = 'hidden';
     setTimeout(() => $('#rm-nombre').focus(), 50);
   }
@@ -1569,6 +1576,7 @@ const CONFIG = {
     $$('.nav .dd').forEach(d => d.classList.toggle('cur', (d.dataset.navGroup||'').split(' ').includes(path.slice(1))));
     setMenu(false);
     $$('[data-dd].open').forEach(d => d.classList.remove('open'));
+    closeModal();
     // detener videos al salir de la vista
     $$('.video-panel.playing').forEach(p => { if (!view.contains(p)) { p.querySelector('iframe')?.remove(); p.classList.remove('playing'); } });
     if (view.dataset.wa) setWa(view.dataset.wa);
